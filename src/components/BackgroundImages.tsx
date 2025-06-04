@@ -19,9 +19,8 @@ const BackgroundImages: React.FC = () => {
 
       const allImages = Object.values(imageModules) as string[];
 
-      // Pegar 50 imagens aleatórias
       const shuffled = allImages.sort(() => 0.5 - Math.random());
-      const selectedImages = shuffled.slice(0, 150);
+      const selectedImages = shuffled.slice(0, 20);
 
       setBackgroundImages(selectedImages);
     };
@@ -45,7 +44,7 @@ const BackgroundImages: React.FC = () => {
             transform: `rotate(${Math.random() * 30 - 15}deg) scale(${
               0.8 + Math.random() * 0.4
             })`,
-            animationDelay: `${index * 2}s`, // ✅ Cada uma aparece a cada 2 segundos
+            animationDelay: `${index * 5}s`,
           }}
         />
       ))}
