@@ -14,7 +14,7 @@ const LanguageCard: React.FC<LanguageCardProps> = ({ language }) => {
   return (
     <Link
       to={`/language/${encodeURIComponent(language.name)}`}
-      className="block p-6 border border-border rounded-lg bg-background hover:bg-secondary/50 transition-colors"
+      className="block p-6 border border-border rounded-lg bg-background hover:bg-muted transition-colors"
     >
       <h3 className="font-medium text-foreground mb-1">
         {formatLanguageName(language.name)}

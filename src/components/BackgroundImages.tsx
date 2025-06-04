@@ -1,6 +1,5 @@
-
-import React, { useState, useEffect } from 'react';
-import { useFetchDirectories } from '../services/githubService';
+import React, { useState, useEffect } from "react";
+import { useFetchDirectories } from "../services/githubService";
 
 const BackgroundImages: React.FC = () => {
   const { directories } = useFetchDirectories();
@@ -19,11 +18,11 @@ const BackgroundImages: React.FC = () => {
       );
 
       const allImages = Object.values(imageModules) as string[];
-      
-      // Pegar 15 imagens aleatórias
+
+      // Pegar 50 imagens aleatórias
       const shuffled = allImages.sort(() => 0.5 - Math.random());
-      const selectedImages = shuffled.slice(0, 15);
-      
+      const selectedImages = shuffled.slice(0, 150);
+
       setBackgroundImages(selectedImages);
     };
 
@@ -33,18 +32,20 @@ const BackgroundImages: React.FC = () => {
   if (backgroundImages.length === 0) return null;
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-10 z-0">
+    <div className="fixed inset-0 overflow-hidden opacity-50 pointer-events-none z-0">
       {backgroundImages.map((image, index) => (
         <img
           key={index}
           src={image}
           alt=""
-          className="absolute w-32 h-40 object-cover rounded-lg transform rotate-12 opacity-30"
+          className="absolute w-32 h-40 object-cover rounded-lg opacity-0 fade-in"
           style={{
             left: `${Math.random() * 90}%`,
             top: `${Math.random() * 90}%`,
-            transform: `rotate(${Math.random() * 30 - 15}deg) scale(${0.8 + Math.random() * 0.4})`,
-            animationDelay: `${Math.random() * 5}s`,
+            transform: `rotate(${Math.random() * 30 - 15}deg) scale(${
+              0.8 + Math.random() * 0.4
+            })`,
+            animationDelay: `${index * 2}s`, // ✅ Cada uma aparece a cada 2 segundos
           }}
         />
       ))}
